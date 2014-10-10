@@ -65,13 +65,32 @@
           
             <section id="section-0" class="kss-section kss-overview">
               <h1>Styleguide</h1>
-<p>Documented within the CSS using <a href="https://github.com/hughsk/kss-node/">KSS</a>. To rebuild the styleguide:
+<p>All CSS is documented using KSS—specifically, the <a href="https://github.com/hughsk/kss-node/">Node implantation</a>. This creates a reliable way to build a style guide, and a consistent method of documenting CSS within the modules themselves.
+
+</p>
+<h2>Structure</h2>
+<p>All CSS is written using the SCSS flavour of <a href="http://sass-lang.com/">Sass</a>, and is preprocessed automatically using <a href="http://harpjs.com">Harp</a>.
+
+</p>
+<p>The CSS is contained within the following partials, which is based on conventions from <a href="https://smacss.com/">SMACSS</a>.
+
+</p>
+<ol>
+<li><strong>Base</strong> Base styles are stored here</li>
+<li><strong>Layout</strong> Site-wide layout styles are stored here, like main containers</li>
+<li><strong>Module</strong> The majority of the CSS is imported here. Modules make up the majority of the site and are contained within the <code>module/</code> directory.</li>
+<li><strong>State</strong> When working with JavaScript, store all state specific classes here. These should be prefixed with <code>.is-</code> or <code>.js-</code>.</li>
+<li><strong>Shame</strong> If you’re unsure what to do, or need to fix something quickly, store it here. Just make sure to document the reason and locations it is used thoroughly, so it can be tidied up later.</li>
+<li><strong>Vendor</strong> Unmodified dependencies are stored here. For example, Bourbon and Normalize.css are stored here.</li>
+</ol>
+<h2>Generating</h2>
+<p>Once you have the project cloned locally, you can rebuild the style guide with the following commands:
 
 </p>
 <pre><code class="bash">npm install
 npm run styleguide
 harp server
-# Visit http://localhost/styleguide</code></pre>
+# Visit http://localhost:9000/styleguide</code></pre>
 
             </section>
           
