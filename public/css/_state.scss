@@ -1,0 +1,17 @@
+// Web Font Loading
+//
+// While fonts are loading, prevent a flash of unstyled text
+// (up until the `timeout` specified in `_layout.ejs` is reached).
+// The toggling of these classes is handled by the Web Font Loader.
+//
+// No styleguide reference.
+.wf-loading {
+  visibility: hidden;
+  display: none;
+}
+
+.wf-active,
+.wf-inactive {
+  visibility: visible;
+  display: inherit;
+}
