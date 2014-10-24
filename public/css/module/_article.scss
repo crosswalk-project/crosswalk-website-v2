@@ -259,8 +259,8 @@
   @include media($mid) {
     margin-bottom: modular-scale($base-font-size, -4, $base-ratio);
     font-size: modular-scale($base-font-size, 1, $base-ratio);
-    line-height: modular-scale($base-font-size, 1, $base-ratio);
-    font-style: italic;
+    line-height: modular-scale($base-font-size, 2, $base-ratio);
+    // font-style: italic;
   }
 }
 
@@ -360,27 +360,26 @@
   ol,
   dl {
     padding-left: 0;
+    padding-right: 0;
     margin-top: modular-scale($base-font-size, 0, $base-ratio);
     margin-bottom: modular-scale($base-font-size, 0, $base-ratio);
-    margin-left: modular-scale($base-font-size, 4, $base-ratio);
-    margin-right: modular-scale($base-font-size, 4, $base-ratio);
+    margin-left: modular-scale($base-font-size, -2, $base-ratio);
+    margin-right: 0;
     @include media($huge) {
-      margin-left: modular-scale($base-font-size, 8, $base-ratio);
-      margin-right: modular-scale($base-font-size, 8, $base-ratio);
+      margin-left: 0;
+      margin-right: 0;
     }
     ul,
     ol,
     dl {
-      margin-left: 0;
-      margin-right: 0;
-      border-top: 1px solid $color-gray;
-      padding-top: modular-scale($base-font-size, 0, $base-ratio);
+      margin-left: modular-scale($base-font-size, -2, $base-ratio);
+      margin-right: modular-scale($base-font-size, -2, $base-ratio);
     }
   }
-  ul > li {
+  ul li {
     list-style-type: disc;
   }
-  ol > li {
+  ol li {
     list-style-type: decimal;
   }
 }
