@@ -22,12 +22,10 @@ body,
 //
 // No styleguide reference.
 ::-moz-selection {
-  background: $color-primary-lighter;
+  background-color: $color-primary-lighter;
 }
 ::selection {
-  background: $color-primary-lighter;
-  color: inherit; // http://robsterlini.co.uk/journal/opentype-and-selection-dont-mix
-  text-shadow: inherit; // “”
+  background-color: $color-primary-lighter;
 }
 
 // Anchors
@@ -135,30 +133,56 @@ samp {
   font-weight: inherit;
 }
 
+// Inline Code
+//
+// Code written within paragraphs.
+//
+// Markup:
+// <p>Other values for the <code>orientation</code> field can be used: for example, on Crosswalk Android, <code>"portrait-primary"</code> refers to the “natural” portrait orientation, with respect to the user.</p>
+//
+// Styleguide 1.5.1.
 code {
   background-color: $color-gray-light;
   border-radius: 3px;
   padding-left: 0.25em;
   padding-right: 0.25em;
   text-shadow: 0 1px 0 $color-background;
-
+  word-wrap: break-word;
+  @include media($mid) {
+    word-wrap: normal;
+  }
   &::-moz-selection {
-    background: $color-primary;
+    background: $color-primary-darker;
   }
   &::selection {
-    background: $color-primary;
+    background: $color-primary-darker;
     color: inherit; // http://robsterlini.co.uk/journal/opentype-and-selection-dont-mix
     text-shadow: inherit; // See above
   }
 
 }
 
-// Normally <pre><code> … </code></pre>
+// Preformatted code blocks
+//
+// Normally `<pre><code> … </code></pre>`
 // is prefered, but most code blocks in
 // the existing content have just been
-// written as <pre>
+// written as `<pre>`
+//
+// Markup:
+// <pre class="language-json"><code>{
+//     "name": "XWalkEmbed",
+//     "version": "0.0.1",
+//     "app": {
+//         "launch": {
+//             "local_path": "index.html"
+//         }
+//     }
+// }
+// </code></pre>
+//
+// Styleguide 1.5.2.
 pre {
-
   background: $color-text;
   color: $color-background;
   padding: modular-scale($base-font-size, -2, $base-ratio);
@@ -170,6 +194,26 @@ pre {
   &::-webkit-scrollbar {
     width: 0;
     height: 0;
+  }
+
+  // This breaks words and contains to 100%
+  // on small screens, then keeps it at 100%
+  // on large screen but will go wider and break
+  // out of the container as necessary
+  display: block;
+  word-break: break-word;
+  width: auto;
+  min-width: 100%;
+  @include media($wide) {
+    word-break: normal;
+    display: inline-block;
+    max-width: 120%;
+  }
+  @include media($huge) {
+    max-width: 130%;
+  }
+  @include media($massive) {
+    max-width: 143%;
   }
 
   code {
